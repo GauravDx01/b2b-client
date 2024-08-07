@@ -1,0 +1,41 @@
+.header-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px ;
+}
+.autcomplete-input{
+    width: 300px;
+    line-height: 10px;
+}
+.form{
+    height: 50vh;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;flex-direction: column;
+    /* background-color: yellow; */
+    gap: 30px;
+    margin: 0 auto;
+
+}
+.MuiInputBase-root{
+    height: 45px;
+    font-size: 5px;
+}
+.autocomplete-wrapper span{
+    color: red;
+}
+.autocomplete-wrapper 
+label{
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.579);
+}
+.show-products{
+    background-color: transparent;
+    border: 1px solid ;
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    font-size: 11px;
+}
