@@ -4,12 +4,16 @@ import './style.css';
 import { url } from '../url/url';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [accountOptions, setAccountOptions] = useState([]);
   const [selectedAccount, setSelectedAccount] = useState(null);
   const [manufacturerOptions, setManufacturerOptions] = useState([]);
+  const [selectedManufacturer, setSelectedManufacturer] = useState(null); // New state for selected manufacturer
   const orderOptions = ["Pre order", "Wholesale Numbers"];
+  const navigate = useNavigate();
 
   const getAccounts = async () => {
     try {
@@ -45,11 +49,18 @@ function Login() {
     setSelectedAccount(value);
   };
 
+  const handleManufacturerChange = (event, value) => {
+    setSelectedManufacturer(value);
+    localStorage.setItem('m_name', value); // Save the selected manufacturer in local storage
+  };
+
+  const nextPage = () => {
+    navigate('/orders');
+  };
+
   return (
     <>
-      <div className="header-img">
-        <img src="https://beautyfashionsales.my.site.com/resource/1663582945000/headerLogo" alt="Header Logo" />
-      </div>
+      <Header />
       <div className="form">
         <div className="autocomplete-wrapper">
           <label htmlFor=""><span>*</span> Account</label>
@@ -66,6 +77,7 @@ function Login() {
           <Autocomplete
             className="autocomplete-input"
             options={manufacturerOptions}
+            onChange={handleManufacturerChange} // Handle manufacturer change
             renderInput={(params) => <TextField {...params} placeholder="Choose an option" variant="outlined" />}
           />
         </div>
@@ -77,7 +89,7 @@ function Login() {
             renderInput={(params) => <TextField {...params} placeholder="Choose an option" variant="outlined" />}
           />
         </div>
-        <button className="show-products">Show Products</button>
+        <button onClick={nextPage} className="show-products">Show Products</button>
       </div>
     </>
   );
