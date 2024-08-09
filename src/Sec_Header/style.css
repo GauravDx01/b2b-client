@@ -1,0 +1,26 @@
+.hero-sec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+   
+    align-content: stretch;
+    flex-direction: row;
+}
+.head{
+    background-color: #747474;
+    color: #fff;
+    display: flex;
+   
+    width: 95%;
+    
+    height: 60px;
+    align-items:center;
+    padding-left: 15px;
+   
+}
+.logo{
+    font-size: 20px;
+    padding: 5px;
+}

@@ -1,0 +1,13 @@
+
+.css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+
+width: 96% !important;
+margin:  0 auto !important;
+}
+.inc-dec{
+    font-size: 25px !important;
+    height: 30px;
+    width: 30px;
+    border : 1px solid black ;
+    border-radius: 50%;
+}

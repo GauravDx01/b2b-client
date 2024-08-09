@@ -23,10 +23,12 @@ function Login() {
         name: account.Name,
         ownerId: account.OwnerId,
         manufacturers: account.Manufacturers_Names__c ? account.Manufacturers_Names__c.split(';').filter(name => name) : []
+        
       }));
       setAccountOptions(accounts);
 
       console.log('Accounts', response);
+      
       console.log(accounts);
     } catch (error) {
       console.error('Error fetching accounts:', error);
@@ -47,15 +49,27 @@ function Login() {
 
   const handleAccountChange = (event, value) => {
     setSelectedAccount(value);
+    console.log("accccc" , value.id)
+    localStorage.setItem('acc_id' , value.id)
   };
 
   const handleManufacturerChange = (event, value) => {
     setSelectedManufacturer(value);
     localStorage.setItem('m_name', value); // Save the selected manufacturer in local storage
   };
+  const [selectedOption, setSelectedOption] = useState(null); // State to hold the selected option
 
   const nextPage = () => {
-    navigate('/orders');
+    if (selectedOption === 'Pre order') {
+      navigate('/pre-order');
+    } else {
+      navigate('/order');
+    }
+  };
+
+  const handleOptionChange = (event, value) => {
+    console.log("Selected option:", value);
+    setSelectedOption(value); // Update the selected option in the state
   };
 
   return (
@@ -82,13 +96,14 @@ function Login() {
           />
         </div>
         <div className="autocomplete-wrapper">
-          <label htmlFor=""><span>*</span> Order Type</label>
-          <Autocomplete
-            options={orderOptions}
-            className="autocomplete-input"
-            renderInput={(params) => <TextField {...params} placeholder="Choose an option" variant="outlined" />}
-          />
-        </div>
+      <label htmlFor=""><span>*</span> Order Type</label>
+      <Autocomplete
+        options={orderOptions}
+        className="autocomplete-input"
+        onChange={handleOptionChange}
+        renderInput={(params) => <TextField {...params} placeholder="Choose an option" variant="outlined" />}
+      />
+    </div>
         <button onClick={nextPage} className="show-products">Show Products</button>
       </div>
     </>
