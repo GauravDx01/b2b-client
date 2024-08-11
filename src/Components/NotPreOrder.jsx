@@ -12,7 +12,7 @@ import { url } from '../url/url';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Sec_header from '../Sec_Header/Sec_header';
-
+import './style.css'
 function NotPreOrder() {
   const [products, setProducts] = useState([]);
   const [quantities, setQuantities] = useState({});
@@ -154,7 +154,7 @@ function NotPreOrder() {
                         : item.unitPrice}
                     </TableCell>
                     <TableCell align="right">{item.Min_Order_QTY__c}</TableCell>
-                    <TableCell align="right">
+                    <TableCell className='qantity' align="right">
                       <Button className='inc-dec' onClick={() => handleDecrement(item.Id)}>-</Button>
                       {quantities[item.Id] > 0 && quantities[item.Id]} {/* Show quantity only if greater than 0 */}
                       <Button className='inc-dec' onClick={() => handleIncrement(item.Id)}>+</Button>

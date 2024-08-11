@@ -10,4 +10,10 @@ margin:  0 auto !important;
     width: 30px;
     border : 1px solid black ;
     border-radius: 50%;
+    background-color: yellow;
+}
+.qantity{
+    display: flex;
+    width: 130px;
+    /* background-color: black; */
 }
